@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f4f4f4;
+    }
 
+    .button {
+      display: block;
+      margin: 20px auto;
+      padding: 20px;
+      width: 250px;
+      background: white;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- MAIN MENU -->
+<div id="home" class="page active">
+  <h1>Menu</h1>
+  <div class="button" onclick="showPage('chicken')">Chicken Wrap</div>
+  <div class="button" onclick="showPage('salad')">Caesar Salad</div>
+</div>
+
+<!-- CHICKEN WRAP -->
+<div id="chicken" class="page">
+  <h1>Chicken Wrap</h1>
+  <p>Protein: 38g</p>
+  <p>Calories: 520</p>
+  <p>Carbs: 42g</p>
+  <p>Fat: 18g</p>
+
+  <div class="button" onclick="showPage('home')">← Back</div>
+</div>
+
+<!-- SALAD -->
+<div id="salad" class="page">
+  <h1>Caesar Salad</h1>
+  <p>Protein: 12g</p>
+  <p>Calories: 310</p>
+
+  <div class="button" onclick="showPage('home')">← Back</div>
+</div>
+
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+}
+</script>
+
+</body>
+</html>
