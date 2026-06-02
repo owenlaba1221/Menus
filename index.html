@@ -15,21 +15,24 @@
     }
 
     /* =========================
-       PAGE SYSTEM (FIXED)
+       PAGE SYSTEM (FADE FIX)
     ========================== */
     .page {
-      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       background: #f4f6f8;
-      overflow: hidden;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
     }
 
     .active {
-      display: block;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* TOP BAR */
@@ -96,9 +99,7 @@
       100% { opacity: 0.4; }
     }
 
-    /* =========================
-       HOME (1 x 4 MENU)
-    ========================== */
+    /* HOME */
     .home-list {
       width: 90%;
       max-width: 900px;
@@ -162,7 +163,6 @@
       line-height: 1.6;
     }
 
-    /* BUTTONS */
     .button {
       display: block;
       margin: 20px auto;
@@ -188,9 +188,7 @@
 
 <div class="topbar">🍽️ MH Meal Builder</div>
 
-<!-- =========================
-     WELCOME SCREEN
-========================= -->
+<!-- WELCOME -->
 <div id="welcome" class="page active" onclick="showPage('home')">
 
   <div class="welcome-content">
@@ -350,10 +348,30 @@
 </div>
 
 <script>
+let inactivityTimer;
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  resetTimer();
 }
+
+function goToWelcome() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('welcome').classList.add('active');
+}
+
+function resetTimer() {
+  clearTimeout(inactivityTimer);
+  inactivityTimer = setTimeout(() => {
+    goToWelcome();
+  }, 45000); // 45 seconds
+}
+
+document.addEventListener('click', resetTimer);
+document.addEventListener('touchstart', resetTimer);
+
+resetTimer();
 </script>
 
 </body>
