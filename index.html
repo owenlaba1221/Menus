@@ -18,6 +18,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
+
       opacity: 0;
       pointer-events: none;
       transition: 0.4s ease;
@@ -42,9 +43,30 @@
       font-size: 32px;
       font-weight: bold;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 10;
     }
 
-    /* HOME */
+    /* ================= WELCOME ================= */
+    #welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .welcome-title {
+      font-size: 90px;
+      font-weight: bold;
+    }
+
+    .welcome-sub {
+      font-size: 40px;
+      margin-top: 20px;
+      opacity: 0.7;
+    }
+
+    /* ================= HOME ================= */
     .home {
       display: flex;
       flex-direction: column;
@@ -65,7 +87,7 @@
       cursor: pointer;
     }
 
-    /* LIST */
+    /* ================= LIST ================= */
     .list {
       padding: 120px 40px;
       max-width: 900px;
@@ -82,7 +104,7 @@
       cursor: pointer;
     }
 
-    /* DETAILS */
+    /* ================= DETAILS ================= */
     .card {
       padding: 120px 40px;
       max-width: 900px;
@@ -114,25 +136,33 @@
 
 <div class="topbar">🍽️ MH Meal Builder</div>
 
-<!-- HOME -->
-<div id="home" class="page active">
-  <div class="home">
+<!-- ================= WELCOME ================= -->
+<div id="welcome" class="page active" onclick="goHome()">
+  <div>
+    <div class="welcome-title">MEAL HALL</div>
+    <div class="welcome-sub">Tap Anywhere to Begin</div>
+  </div>
+</div>
 
+<!-- ================= HOME ================= -->
+<div id="home" class="page">
+
+  <div class="home">
     <div class="tile" onclick="openList('protein')">🍗 Protein Picks</div>
     <div class="tile" onclick="openList('veg')">🥦 Veggie Picks</div>
     <div class="tile" onclick="openList('fibre')">🌾 Fibre & Grains</div>
     <div class="tile" onclick="openList('drinks')">🧃 Drinks & Smoothies</div>
     <div class="tile" onclick="openList('top')">⭐ Top Picks</div>
-
   </div>
+
 </div>
 
-<!-- LIST PAGE -->
+<!-- ================= LIST ================= -->
 <div id="list" class="page">
   <div class="list" id="listContent"></div>
 </div>
 
-<!-- DETAILS PAGE -->
+<!-- ================= DETAILS ================= -->
 <div id="details" class="page">
   <div class="card">
     <div class="box" id="detailsContent"></div>
@@ -144,98 +174,28 @@
 let data = {
 
   protein: [
-    {
-      name: "Chicken Wrap",
-      calories: 520,
-      protein: "38g",
-      carbs: "42g",
-      fat: "18g",
-      location: "Lunch Station"
-    },
-    {
-      name: "Egg Wrap",
-      calories: 420,
-      protein: "24g",
-      carbs: "30g",
-      fat: "22g",
-      location: "Breakfast Station"
-    },
-    {
-      name: "Greek Yogurt",
-      calories: 170,
-      protein: "15g",
-      carbs: "6g",
-      fat: "9g",
-      location: "Grab & Go"
-    }
+    { name:"Chicken Wrap", calories:520, protein:"38g", carbs:"42g", fat:"18g", location:"Lunch Station" },
+    { name:"Egg Wrap", calories:420, protein:"24g", carbs:"30g", fat:"22g", location:"Breakfast Station" },
+    { name:"Greek Yogurt", calories:170, protein:"15g", carbs:"6g", fat:"9g", location:"Grab & Go" }
   ],
 
   veg: [
-    {
-      name: "Caesar Salad",
-      calories: 310,
-      protein: "12g",
-      carbs: "10g",
-      fat: "22g",
-      location: "Salad Bar"
-    },
-    {
-      name: "Veggie Bowl",
-      calories: 150,
-      protein: "6g",
-      carbs: "18g",
-      fat: "5g",
-      location: "Hot Station"
-    }
+    { name:"Caesar Salad", calories:310, protein:"12g", carbs:"10g", fat:"22g", location:"Salad Bar" },
+    { name:"Veggie Bowl", calories:150, protein:"6g", carbs:"18g", fat:"5g", location:"Hot Station" }
   ],
 
   fibre: [
-    {
-      name: "Protein Oatmeal",
-      calories: 380,
-      protein: "20g",
-      carbs: "55g",
-      fat: "8g",
-      location: "Breakfast Station"
-    },
-    {
-      name: "Brown Rice Bowl",
-      calories: 410,
-      protein: "10g",
-      carbs: "72g",
-      fat: "6g",
-      location: "Hot Station"
-    }
+    { name:"Protein Oatmeal", calories:380, protein:"20g", carbs:"55g", fat:"8g", location:"Breakfast Station" },
+    { name:"Brown Rice Bowl", calories:410, protein:"10g", carbs:"72g", fat:"6g", location:"Hot Station" }
   ],
 
   drinks: [
-    {
-      name: "Protein Smoothie",
-      calories: 250,
-      protein: "30g",
-      carbs: "28g",
-      fat: "4g",
-      location: "Drink Station"
-    },
-    {
-      name: "Iced Coffee",
-      calories: 120,
-      protein: "5g",
-      carbs: "18g",
-      fat: "3g",
-      location: "Drink Station"
-    }
+    { name:"Protein Smoothie", calories:250, protein:"30g", carbs:"28g", fat:"4g", location:"Drink Station" },
+    { name:"Iced Coffee", calories:120, protein:"5g", carbs:"18g", fat:"3g", location:"Drink Station" }
   ],
 
   top: [
-    {
-      name: "High Protein Combo",
-      calories: 770,
-      protein: "68g",
-      carbs: "70g",
-      fat: "22g",
-      location: "Combo Meal"
-    }
+    { name:"High Protein Combo", calories:770, protein:"68g", carbs:"70g", fat:"22g", location:"Combo Meal Area" }
   ]
 };
 
@@ -244,18 +204,28 @@ function show(page) {
   document.getElementById(page).classList.add('active');
 }
 
+/* WELCOME → HOME */
+function goHome() {
+  show('home');
+}
+
+/* CATEGORY → LIST */
 function openList(category) {
   let html = "";
+
   data[category].forEach((item, i) => {
-    html += `<div class="item" onclick="openDetails('${category}',${i})">
-      ${item.name}
-    </div>`;
+    html += `
+      <div class="item" onclick="openDetails('${category}',${i})">
+        ${item.name}
+      </div>
+    `;
   });
 
   document.getElementById("listContent").innerHTML = html;
   show('list');
 }
 
+/* ITEM → DETAILS */
 function openDetails(category, index) {
   let item = data[category][index];
 
@@ -271,10 +241,6 @@ function openDetails(category, index) {
   `;
 
   show('details');
-}
-
-function goHome() {
-  show('home');
 }
 </script>
 
