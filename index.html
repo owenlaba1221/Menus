@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MH Meal Builder</title>
+  <title>Meal Builder</title>
 
   <style>
     html, body {
@@ -43,8 +43,56 @@
     }
 
     /* =========================
-       HOME: 1 x 4 VERTICAL KIOSK
+       WELCOME SCREEN
     ========================== */
+
+    #welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      height: 100vh;
+      padding-top: 0;
+    }
+
+    .welcome-content {
+      max-width: 1200px;
+      padding: 40px;
+    }
+
+    .welcome-title {
+      font-size: 100px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .welcome-subtitle {
+      font-size: 72px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .welcome-text {
+      font-size: 36px;
+      line-height: 1.5;
+      margin-bottom: 80px;
+    }
+
+    .tap-message {
+      font-size: 42px;
+      font-weight: bold;
+      color: #666;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* HOME */
     .home-list {
       width: 90%;
       max-width: 900px;
@@ -108,7 +156,6 @@
       line-height: 1.6;
     }
 
-    /* BUTTONS */
     .button {
       display: block;
       margin: 20px auto;
@@ -134,8 +181,29 @@
 
 <div class="topbar">🍽️ MH Meal Builder</div>
 
+<!-- WELCOME SCREEN (NEW FIRST PAGE) -->
+<div id="welcome" class="page active" onclick="showPage('home')">
+
+  <div class="welcome-content">
+
+    <div class="welcome-title">🍽️ MEAL HALL</div>
+
+    <div class="welcome-subtitle">Build a Better Meal</div>
+
+    <div class="welcome-text">
+      Discover simple ways to improve your meal using options available in the dining hall.
+    </div>
+
+    <div class="tap-message">
+      Tap Anywhere to Begin
+    </div>
+
+  </div>
+
+</div>
+
 <!-- HOME -->
-<div id="home" class="page active">
+<div id="home" class="page">
 
   <div class="home-list">
 
