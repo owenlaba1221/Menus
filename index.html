@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Food Menu</title>
+  <title>MH Meal Builder</title>
 
   <style>
     body {
@@ -27,13 +27,12 @@
       display: block;
     }
 
-    /* MAIN BUTTON STYLE (KIOSK CARDS) */
     .button {
       display: block;
       margin: 25px auto;
       padding: 40px;
       width: 80%;
-      max-width: 600px;
+      max-width: 650px;
       background: white;
       border-radius: 25px;
       font-size: 34px;
@@ -46,29 +45,22 @@
       transform: scale(0.98);
     }
 
-    /* BACK/HOME BUTTON */
     .nav {
       background: #d9d9d9;
       font-size: 28px;
     }
 
-    .nav-bar {
-      margin-top: 40px;
-    }
-
-    /* ITEM PAGE STYLE */
     .info {
       background: white;
       padding: 40px;
       margin: 20px auto;
       width: 80%;
-      max-width: 700px;
+      max-width: 750px;
       border-radius: 25px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.1);
       font-size: 30px;
       line-height: 1.6;
     }
-
   </style>
 </head>
 
@@ -76,118 +68,107 @@
 
 <!-- HOME -->
 <div id="home" class="page active">
-  <h1>🍽️ Menu</h1>
+  <h1>🍽️ How can we improve your meal?</h1>
 
-  <div class="button" onclick="showPage('breakfast')">🍳 Breakfast</div>
-  <div class="button" onclick="showPage('lunch')">🥗 Lunch</div>
-  <div class="button" onclick="showPage('drinks')">🥤 Drinks</div>
+  <div class="button" onclick="showPage('protein')">🍗 Add More Protein</div>
+  <div class="button" onclick="showPage('veg')">🥦 Add More Vegetables</div>
+  <div class="button" onclick="showPage('fibre')">🌾 Increase Fibre</div>
+  <div class="button" onclick="showPage('healthy')">🥗 Healthier Choices</div>
 </div>
 
-<!-- BREAKFAST -->
-<div id="breakfast" class="page">
-  <h1>🍳 Breakfast</h1>
+<!-- PROTEIN -->
+<div id="protein" class="page">
+  <h1>🍗 Add More Protein</h1>
 
-  <div class="button" onclick="showPage('eggwrap')">Egg Wrap</div>
-  <div class="button" onclick="showPage('oatmeal')">Protein Oatmeal</div>
-
-  <div class="nav-bar">
-    <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-    <div class="button nav" onclick="showPage('home')">← Back</div>
-  </div>
-</div>
-
-<!-- LUNCH -->
-<div id="lunch" class="page">
-  <h1>🥗 Lunch</h1>
-
+  <div class="button" onclick="showPage('greekyogurt')">Greek Yogurt</div>
+  <div class="button" onclick="showPage('eggs')">Eggs / Egg Wrap</div>
   <div class="button" onclick="showPage('chickenwrap')">Chicken Wrap</div>
-  <div class="button" onclick="showPage('salad')">Caesar Salad</div>
-  <div class="button" onclick="showPage('ricebowl')">Protein Rice Bowl</div>
+  <div class="button" onclick="showPage('smoothie')">Protein Smoothie</div>
 
-  <div class="nav-bar">
-    <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-    <div class="button nav" onclick="showPage('home')">← Back</div>
-  </div>
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
-<!-- DRINKS -->
-<div id="drinks" class="page">
-  <h1>🥤 Drinks</h1>
+<!-- VEGETABLES -->
+<div id="veg" class="page">
+  <h1>🥦 Add More Vegetables</h1>
 
-  <div class="button" onclick="showPage('smoothie')">Protein Smoothie</div>
-  <div class="button" onclick="showPage('coffee')">Iced Coffee</div>
+  <div class="button" onclick="showPage('salad')">Caesar Salad</div>
+  <div class="button" onclick="showPage('ricebowl')">Veggie Rice Bowl</div>
 
-  <div class="nav-bar">
-    <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-    <div class="button nav" onclick="showPage('home')">← Back</div>
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
+</div>
+
+<!-- FIBRE -->
+<div id="fibre" class="page">
+  <h1>🌾 Increase Fibre</h1>
+
+  <div class="info">
+    Fibre helps with digestion and keeps you full longer. Choose whole grains, vegetables, and legumes when possible.
   </div>
+
+  <div class="button" onclick="showPage('oatmeal')">Protein Oatmeal</div>
+  <div class="button" onclick="showPage('ricebowl')">Rice Bowl</div>
+
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
+</div>
+
+<!-- HEALTHY CHOICES -->
+<div id="healthy" class="page">
+  <h1>🥗 Healthier Choices</h1>
+
+  <div class="button" onclick="showPage('salad')">Caesar Salad</div>
+  <div class="button" onclick="showPage('smoothie')">Protein Smoothie</div>
+  <div class="button" onclick="showPage('greekyogurt')">Greek Yogurt</div>
+
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
 <!-- ITEM PAGES -->
+
+<div id="greekyogurt" class="page">
+  <h1>Greek Yogurt</h1>
+
+  <div class="info">
+    ✔ High in protein<br>
+    ✔ Great breakfast or snack<br>
+    ✔ Pairs well with fruit or granola<br><br>
+
+    Where to find it:<br>
+    • Grab & Go fridge<br>
+    • Breakfast station
+  </div>
+
+  <div class="button nav" onclick="showPage('protein')">← Back</div>
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
+</div>
+
+<div id="eggs" class="page">
+  <h1>Eggs / Egg Wrap</h1>
+
+  <div class="info">
+    ✔ High-quality protein<br>
+    ✔ Good breakfast option<br><br>
+
+    Where to find it:<br>
+    • Breakfast station
+  </div>
+
+  <div class="button nav" onclick="showPage('protein')">← Back</div>
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
+</div>
 
 <div id="chickenwrap" class="page">
   <h1>Chicken Wrap</h1>
 
   <div class="info">
-    Calories: 520<br>
-    Protein: 38g<br>
-    Carbs: 42g<br>
-    Fat: 18g
+    ✔ High protein meal option<br>
+    ✔ Balanced carbs + protein<br><br>
+
+    Where to find it:<br>
+    • Lunch station
   </div>
 
-  <div class="button nav" onclick="showPage('lunch')">← Back</div>
-  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-</div>
-
-<div id="salad" class="page">
-  <h1>Caesar Salad</h1>
-
-  <div class="info">
-    Calories: 310<br>
-    Protein: 12g<br>
-    Carbs: 10g<br>
-    Fat: 22g
-  </div>
-
-  <div class="button nav" onclick="showPage('lunch')">← Back</div>
-  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-</div>
-
-<div id="ricebowl" class="page">
-  <h1>Protein Rice Bowl</h1>
-
-  <div class="info">
-    Calories: 610<br>
-    Protein: 45g<br>
-    Carbs: 70g<br>
-    Fat: 15g
-  </div>
-
-  <div class="button nav" onclick="showPage('lunch')">← Back</div>
-  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-</div>
-
-<div id="eggwrap" class="page">
-  <h1>Egg Wrap</h1>
-
-  <div class="info">
-    Calories: 420<br>
-    Protein: 24g
-  </div>
-
-  <div class="button nav" onclick="showPage('breakfast')">← Back</div>
-  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
-</div>
-
-<div id="oatmeal" class="page">
-  <h1>Protein Oatmeal</h1>
-
-  <div class="info">
-    Calories: 380<br>
-    Protein: 20g
-  </div>
-
-  <div class="button nav" onclick="showPage('breakfast')">← Back</div>
+  <div class="button nav" onclick="showPage('protein')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
@@ -195,23 +176,59 @@
   <h1>Protein Smoothie</h1>
 
   <div class="info">
-    Calories: 250<br>
-    Protein: 30g
+    ✔ Quick protein boost<br>
+    ✔ Good post-workout option<br><br>
+
+    Where to find it:<br>
+    • Beverage station
   </div>
 
-  <div class="button nav" onclick="showPage('drinks')">← Back</div>
+  <div class="button nav" onclick="showPage('protein')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
-<div id="coffee" class="page">
-  <h1>Iced Coffee</h1>
+<div id="salad" class="page">
+  <h1>Caesar Salad</h1>
 
   <div class="info">
-    Calories: 120<br>
-    Protein: 5g
+    ✔ Adds vegetables to your meal<br>
+    ✔ Lighter option<br><br>
+
+    Where to find it:<br>
+    • Salad bar
   </div>
 
-  <div class="button nav" onclick="showPage('drinks')">← Back</div>
+  <div class="button nav" onclick="showPage('veg')">← Back</div>
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
+</div>
+
+<div id="ricebowl" class="page">
+  <h1>Rice Bowl</h1>
+
+  <div class="info">
+    ✔ Balanced carbs and nutrients<br>
+    ✔ Can include vegetables and protein<br><br>
+
+    Where to find it:<br>
+    • Hot food station
+  </div>
+
+  <div class="button nav" onclick="showPage('veg')">← Back</div>
+  <div class="button nav" onclick="showPage('home')">🏠 Home</div>
+</div>
+
+<div id="oatmeal" class="page">
+  <h1>Protein Oatmeal</h1>
+
+  <div class="info">
+    ✔ High fibre option<br>
+    ✔ Keeps you full longer<br><br>
+
+    Where to find it:<br>
+    • Breakfast station
+  </div>
+
+  <div class="button nav" onclick="showPage('fibre')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
