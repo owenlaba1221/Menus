@@ -8,59 +8,86 @@
       font-family: Arial, sans-serif;
       text-align: center;
       background: #eef2f5;
-      font-size: 26px;
       margin: 0;
       color: #222;
+      font-size: 26px;
     }
 
     h1 {
-      font-size: 64px;
-      margin: 40px 0 20px;
+      font-size: 60px;
+      margin: 30px 0 10px;
+    }
+
+    p {
+      margin: 0;
+      color: #555;
+      font-size: 22px;
     }
 
     .page {
       display: none;
-      padding: 30px;
+      padding: 20px;
     }
 
     .active {
       display: block;
     }
 
+    /* HOME GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      width: 85%;
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 25px;
+      padding: 55px 20px;
+      font-size: 30px;
+      font-weight: bold;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .card:active {
+      transform: scale(0.97);
+    }
+
     .button {
       display: block;
-      margin: 25px auto;
-      padding: 40px;
+      margin: 20px auto;
+      padding: 35px;
       width: 80%;
       max-width: 650px;
       background: white;
       border-radius: 25px;
-      font-size: 34px;
+      font-size: 30px;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      transition: transform 0.1s ease;
-    }
-
-    .button:active {
-      transform: scale(0.98);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     }
 
     .nav {
       background: #d9d9d9;
-      font-size: 28px;
+      font-size: 26px;
     }
 
     .info {
       background: white;
-      padding: 40px;
+      padding: 35px;
       margin: 20px auto;
       width: 80%;
       max-width: 750px;
       border-radius: 25px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-      font-size: 30px;
+      font-size: 28px;
       line-height: 1.6;
     }
+
   </style>
 </head>
 
@@ -68,21 +95,38 @@
 
 <!-- HOME -->
 <div id="home" class="page active">
-  <h1>Improve Your Meal</h1>
 
-  <div class="button" onclick="showPage('protein')">🍗 Add More Protein</div>
-  <div class="button" onclick="showPage('veg')">🥦 Add More Vegetables</div>
-  <div class="button" onclick="showPage('fibre')">🌾 Increase Fibre</div>
-  <div class="button" onclick="showPage('healthy')">🥗 Healthier Choices</div>
+  <h1>🍽️ Build a Better Meal</h1>
+  <p>Select an option to improve your meal using MH choices</p>
+
+  <div class="grid">
+
+    <div class="card" onclick="showPage('protein')">
+      🍗<br>Add Protein
+    </div>
+
+    <div class="card" onclick="showPage('veg')">
+      🥦<br>Add Vegetables
+    </div>
+
+    <div class="card" onclick="showPage('fibre')">
+      🌾<br>Increase Fibre
+    </div>
+
+    <div class="card" onclick="showPage('healthy')">
+      🥗<br>Healthier Choices
+    </div>
+
+  </div>
 </div>
 
 <!-- PROTEIN -->
 <div id="protein" class="page">
-  <h1>🍗 Add More Protein</h1>
+  <h1>🍗 Add Protein</h1>
 
-  <div class="button" onclick="showPage('greekyogurt')">Greek Yogurt</div>
+  <div class="button" onclick="showPage('greek')">Greek Yogurt</div>
   <div class="button" onclick="showPage('eggs')">Eggs / Egg Wrap</div>
-  <div class="button" onclick="showPage('chickenwrap')">Chicken Wrap</div>
+  <div class="button" onclick="showPage('chicken')">Chicken Wrap</div>
   <div class="button" onclick="showPage('smoothie')">Protein Smoothie</div>
 
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
@@ -90,10 +134,10 @@
 
 <!-- VEGETABLES -->
 <div id="veg" class="page">
-  <h1>🥦 Add More Vegetables</h1>
+  <h1>🥦 Add Vegetables</h1>
 
   <div class="button" onclick="showPage('salad')">Caesar Salad</div>
-  <div class="button" onclick="showPage('ricebowl')">Veggie Rice Bowl</div>
+  <div class="button" onclick="showPage('rice')">Veggie Rice Bowl</div>
 
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
@@ -103,34 +147,33 @@
   <h1>🌾 Increase Fibre</h1>
 
   <div class="info">
-    Fibre helps with digestion and keeps you full longer. Choose whole grains, vegetables, and legumes when possible.
+    Fibre helps digestion and keeps you full longer. Choose whole grains, vegetables, and legumes when possible.
   </div>
 
-  <div class="button" onclick="showPage('oatmeal')">Protein Oatmeal</div>
-  <div class="button" onclick="showPage('ricebowl')">Rice Bowl</div>
+  <div class="button" onclick="showPage('oats')">Protein Oatmeal</div>
 
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
-<!-- HEALTHY CHOICES -->
+<!-- HEALTHY -->
 <div id="healthy" class="page">
   <h1>🥗 Healthier Choices</h1>
 
   <div class="button" onclick="showPage('salad')">Caesar Salad</div>
   <div class="button" onclick="showPage('smoothie')">Protein Smoothie</div>
-  <div class="button" onclick="showPage('greekyogurt')">Greek Yogurt</div>
+  <div class="button" onclick="showPage('greek')">Greek Yogurt</div>
 
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
 <!-- ITEM PAGES -->
 
-<div id="greekyogurt" class="page">
+<div id="greek" class="page">
   <h1>Greek Yogurt</h1>
 
   <div class="info">
     ✔ High in protein<br>
-    ✔ Great breakfast or snack<br>
+    ✔ Great snack or breakfast<br>
     ✔ Pairs well with fruit or granola<br><br>
 
     Where to find it:<br>
@@ -144,90 +187,72 @@
 
 <div id="eggs" class="page">
   <h1>Eggs / Egg Wrap</h1>
-
   <div class="info">
     ✔ High-quality protein<br>
-    ✔ Good breakfast option<br><br>
-
+    ✔ Breakfast option<br><br>
     Where to find it:<br>
     • Breakfast station
   </div>
-
   <div class="button nav" onclick="showPage('protein')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
-<div id="chickenwrap" class="page">
+<div id="chicken" class="page">
   <h1>Chicken Wrap</h1>
-
   <div class="info">
-    ✔ High protein meal option<br>
-    ✔ Balanced carbs + protein<br><br>
-
+    ✔ High protein meal<br>
+    ✔ Balanced option<br><br>
     Where to find it:<br>
     • Lunch station
   </div>
-
   <div class="button nav" onclick="showPage('protein')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
 <div id="smoothie" class="page">
   <h1>Protein Smoothie</h1>
-
   <div class="info">
     ✔ Quick protein boost<br>
     ✔ Good post-workout option<br><br>
-
     Where to find it:<br>
     • Beverage station
   </div>
-
   <div class="button nav" onclick="showPage('protein')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
 <div id="salad" class="page">
   <h1>Caesar Salad</h1>
-
   <div class="info">
-    ✔ Adds vegetables to your meal<br>
-    ✔ Lighter option<br><br>
-
+    ✔ Adds vegetables<br>
+    ✔ Lighter meal option<br><br>
     Where to find it:<br>
     • Salad bar
   </div>
-
   <div class="button nav" onclick="showPage('veg')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
-<div id="ricebowl" class="page">
-  <h1>Rice Bowl</h1>
-
+<div id="rice" class="page">
+  <h1>Veggie Rice Bowl</h1>
   <div class="info">
-    ✔ Balanced carbs and nutrients<br>
-    ✔ Can include vegetables and protein<br><br>
-
+    ✔ Includes vegetables + grains<br>
+    ✔ Balanced meal option<br><br>
     Where to find it:<br>
     • Hot food station
   </div>
-
   <div class="button nav" onclick="showPage('veg')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
 
-<div id="oatmeal" class="page">
+<div id="oats" class="page">
   <h1>Protein Oatmeal</h1>
-
   <div class="info">
     ✔ High fibre option<br>
     ✔ Keeps you full longer<br><br>
-
     Where to find it:<br>
     • Breakfast station
   </div>
-
   <div class="button nav" onclick="showPage('fibre')">← Back</div>
   <div class="button nav" onclick="showPage('home')">🏠 Home</div>
 </div>
@@ -237,6 +262,21 @@ function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
 }
+
+/* AUTO RESET TO HOME AFTER 60s OF INACTIVITY */
+let timer;
+
+function resetTimer() {
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    showPage('home');
+  }, 60000);
+}
+
+document.addEventListener('click', resetTimer);
+document.addEventListener('touchstart', resetTimer);
+
+resetTimer();
 </script>
 
 </body>
