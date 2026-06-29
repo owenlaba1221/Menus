@@ -19,7 +19,7 @@ html,body{
   overflow:hidden;
 }
 
-/* BACKGROUND IMAGE */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -134,21 +134,24 @@ body::before{
 }
 
 /* ========================= */
-/* 🔙 BACK TAB (BOTTOM LEFT) */
+/* 🔘 UNIFIED TAB STYLE */
 /* ========================= */
-.back-tab{
+.tab{
   position:fixed;
   bottom:0;
-  left:0;
+
+  width:200px;
+  height:80px;
 
   background:#003A70;
   color:white;
 
-  padding:22px 45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   font-size:28px;
   font-weight:bold;
-
-  border-radius:0 18px 0 0;
 
   cursor:pointer;
   z-index:1000;
@@ -156,34 +159,33 @@ body::before{
   box-shadow:0 -6px 18px rgba(0,0,0,0.3);
 }
 
+/* BACK TAB (LEFT) */
+.back-tab{
+  left:0;
+  border-radius:0 18px 0 0;
+}
+
 .back-tab:hover{
   background:#E4002B;
 }
 
-/* ========================= */
-/* 📍 LOGO (BOTTOM RIGHT) */
-/* ========================= */
-.logo{
-  position:fixed;
-  bottom:0;
+/* LOGO TAB (RIGHT) */
+.logo-tab{
   right:0;
-
-  width:200px;
-
   background:#ffffff;
-
-  padding:16px 18px;
-
   border-radius:18px 0 0 0;
-
-  box-shadow:-6px -6px 18px rgba(0,0,0,0.25);
-
-  z-index:1000;
+  box-shadow:0 -6px 18px rgba(0,0,0,0.25);
 }
 
-.logo img{
-  width:100%;
-  display:block;
+/* make logo fit inside tab */
+.logo-tab img{
+  width:140px;
+  height:auto;
+}
+
+/* HIDE TABS ON WELCOME */
+.hide-ui{
+  display:none !important;
 }
 
 </style>
@@ -191,14 +193,14 @@ body::before{
 
 <body>
 
-<!-- LOGO (BOTTOM RIGHT ONLY) -->
-<div class="logo">
-  <img src="logo.png" alt="Sodexo Logo">
+<!-- BACK TAB -->
+<div id="backTab" class="tab back-tab" onclick="goBack()">
+  ⟵ Back
 </div>
 
-<!-- BACK TAB -->
-<div class="back-tab" onclick="goBack()">
-  ⟵ Back
+<!-- LOGO TAB -->
+<div id="logoTab" class="tab logo-tab">
+  <img src="logo.png" alt="Sodexo Logo">
 </div>
 
 <!-- WELCOME -->
@@ -271,7 +273,11 @@ body::before{
 
 let currentPage = "welcome";
 
+const backTab = document.getElementById("backTab");
+const logoTab = document.getElementById("logoTab");
+
 function showPage(id){
+
   document.querySelectorAll(".page").forEach(p=>{
     p.classList.remove("active");
   });
@@ -279,16 +285,30 @@ function showPage(id){
   document.getElementById(id).classList.add("active");
 
   currentPage = id;
+
+  updateUI();
 }
 
 function goBack(){
-
   if(currentPage === "menu"){
     showPage("welcome");
   } else {
     showPage("menu");
   }
 }
+
+/* SHOW/HIDE TABS ON WELCOME */
+function updateUI(){
+  if(currentPage === "welcome"){
+    backTab.classList.add("hide-ui");
+    logoTab.classList.add("hide-ui");
+  } else {
+    backTab.classList.remove("hide-ui");
+    logoTab.classList.remove("hide-ui");
+  }
+}
+
+updateUI();
 
 </script>
 
