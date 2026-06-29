@@ -42,9 +42,6 @@ body::before{
   opacity:0;
   pointer-events:none;
   transition:0.35s ease;
-
-  display:flex;
-  flex-direction:column;
 }
 
 .page.active{
@@ -69,14 +66,15 @@ body::before{
   box-shadow:0 4px 18px rgba(0,0,0,0.2);
 }
 
-/* ================= WELCOME (FIXED TOP ALIGN) ================= */
+/* ================= WELCOME (FIXED CENTER) ================= */
 
 #welcome{
   display:flex;
-  justify-content:flex-start;
-  align-items:flex-start;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 
-  padding:140px 60px;
+  height:100%;
 
   color:white;
 
@@ -107,7 +105,6 @@ body::before{
   display:flex;
   justify-content:flex-start;
   align-items:flex-start;
-
   padding-top:20px;
   height:100%;
 }
@@ -122,7 +119,7 @@ body::before{
   gap:35px;
 }
 
-/* ================= CARDS (BIG TOUCH) ================= */
+/* ================= CARDS ================= */
 
 .card{
   display:flex;
@@ -162,40 +159,55 @@ body::before{
   color:#555;
 }
 
-/* ================= BLANK ================= */
+/* ================= PAGE CONTENT ================= */
 
-.blank{
-  flex:1;
+.page-content{
+  height:calc(100% - 110px);
   display:flex;
   align-items:center;
   justify-content:center;
+}
 
+/* ================= BACK + HOME BUTTON ================= */
+
+.btn{
+  position:absolute;
+  bottom:50px;
+
+  background:#7A1E2C;
+  color:white;
+
+  padding:28px 90px;
+  border:none;
+  border-radius:30px;
+
+  font-size:34px;
+  cursor:pointer;
+}
+
+.back{
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.homebtn{
+  right:40px;
+  bottom:40px;
+  padding:22px 60px;
+  font-size:28px;
+}
+
+/* ================= BLANK ================= */
+
+.blank{
   font-size:70px;
   font-weight:bold;
   color:#7A1E2C;
 }
 
-/* ================= BACK BUTTON ================= */
-
-.back{
-  position:absolute;
-  bottom:50px;
-  left:50%;
-  transform:translateX(-50%);
-
-  background:#7A1E2C;
-  color:white;
-
-  padding:30px 100px;
-  border:none;
-  border-radius:30px;
-
-  font-size:36px;
-  cursor:pointer;
-}
-
-button, .card{
-  touch-action:manipulation;
+/* touch fix */
+button, .card {
+  touch-action: manipulation;
 }
 
 </style>
@@ -264,29 +276,38 @@ button, .card{
 
 <div id="protein" class="page">
   <div class="topbar">Add Protein</div>
-  <div class="blank">Coming Soon</div>
-  <button class="back" onclick="showPage('home')">← Back</button>
+  <div class="page-content">
+    <div class="blank">Coming Soon</div>
+  </div>
+  <button class="btn back" onclick="showPage('home')">← Back</button>
+  <button class="btn homebtn" onclick="showPage('home')">Home</button>
 </div>
 
 <div id="veg" class="page">
   <div class="topbar">Add Vegetables</div>
-  <div class="blank">Coming Soon</div>
-  <button class="back" onclick="showPage('home')">← Back</button>
+  <div class="page-content">
+    <div class="blank">Coming Soon</div>
+  </div>
+  <button class="btn back" onclick="showPage('home')">← Back</button>
+  <button class="btn homebtn" onclick="showPage('home')">Home</button>
 </div>
 
 <div id="fibre" class="page">
   <div class="topbar">Add Fibre</div>
-  <div class="blank">
-    <img src="https://images.unsplash.com/photo-1604908554165-5f1a9d1b5c2d?auto=format&fit=crop&w=1200&q=80"
-         style="width:80%; border-radius:30px;">
+  <div class="page-content">
+    <div class="blank">Coming Soon</div>
   </div>
-  <button class="back" onclick="showPage('home')">← Back</button>
+  <button class="btn back" onclick="showPage('home')">← Back</button>
+  <button class="btn homebtn" onclick="showPage('home')">Home</button>
 </div>
 
 <div id="creative" class="page">
   <div class="topbar">Get Creative</div>
-  <div class="blank">Coming Soon</div>
-  <button class="back" onclick="showPage('home')">← Back</button>
+  <div class="page-content">
+    <div class="blank">Coming Soon</div>
+  </div>
+  <button class="btn back" onclick="showPage('home')">← Back</button>
+  <button class="btn homebtn" onclick="showPage('home')">Home</button>
 </div>
 
 <script>
@@ -318,7 +339,7 @@ function resetTimer(){
       showPage("welcome");
     }, 10000);
 
-  }, 30000); // ✅ 30 SECONDS
+  }, 30000);
 
 }
 
