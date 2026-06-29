@@ -1,258 +1,414 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MH Meal Builder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    html, body {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      overflow: hidden;
-      color: #222;
-    }
+<title>Meal Hall - Build Your Plate</title>
 
-    /* PAGE SYSTEM */
-    .page {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #f4f6f8;
+<style>
 
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-      overflow-y: auto;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-    .active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#f7f7f2;
+}
 
-    /* TOP BAR */
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 90px;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      font-weight: bold;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      z-index: 10;
-    }
+/* ---------------- Background ---------------- */
 
-    /* ================= WELCOME ================= */
-    #welcome {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-    }
+body{
+    background:
+    radial-gradient(circle at 20% 20%, rgba(124,179,66,.08) 0 80px, transparent 81px),
+    radial-gradient(circle at 80% 70%, rgba(76,175,80,.08) 0 100px, transparent 101px),
+    radial-gradient(circle at 70% 25%, rgba(255,193,7,.05) 0 70px, transparent 71px),
+    #f7f7f2;
+}
 
-    .welcome-title {
-      font-size: 90px;
-      font-weight: bold;
-    }
+/* ---------------- Pages ---------------- */
 
-    .welcome-sub {
-      font-size: 40px;
-      opacity: 0.6;
-      margin-top: 20px;
-    }
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    pointer-events:none;
+    transition:.4s;
+}
 
-    /* ================= HOME ================= */
-    .home-list {
-      width: 90%;
-      max-width: 900px;
-      margin: 120px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
+.page.active{
+    opacity:1;
+    pointer-events:auto;
+}
 
-    .tile {
-      background: white;
-      padding: 40px;
-      font-size: 32px;
-      font-weight: bold;
-      border-radius: 25px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-      text-align: center;
-      cursor: pointer;
-    }
+/* ---------------- Top Bar ---------------- */
 
-    /* ================= LIST ================= */
-    .list {
-      width: 85%;
-      max-width: 900px;
-      margin: 120px auto;
-    }
+.topbar{
 
-    .item {
-      background: white;
-      padding: 30px;
-      margin: 18px 0;
-      border-radius: 20px;
-      font-size: 28px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      cursor: pointer;
-    }
+    height:90px;
+    background:white;
 
-    /* ================= DETAILS ================= */
-    .card {
-      background: white;
-      padding: 45px;
-      margin: 120px auto 30px auto;
-      width: 85%;
-      max-width: 800px;
-      border-radius: 25px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      font-size: 28px;
-      line-height: 1.6;
-    }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    .button {
-      display: block;
-      margin: 20px auto;
-      padding: 30px;
-      width: 80%;
-      max-width: 600px;
-      background: white;
-      border-radius: 20px;
-      font-size: 28px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
-    }
+    font-size:34px;
+    font-weight:bold;
 
-    .back {
-      background: #e0e0e0;
-    }
-  </style>
+    color:#2E5E2E;
+
+    box-shadow:0 3px 18px rgba(0,0,0,.08);
+}
+
+/* ---------------- Welcome ---------------- */
+
+#welcome{
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+cursor:pointer;
+
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=80");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+
+}
+
+.welcome-box{
+
+padding:40px;
+
+}
+
+.welcome-title{
+
+font-size:78px;
+font-weight:bold;
+margin-bottom:20px;
+
+}
+
+.welcome-sub{
+
+font-size:34px;
+opacity:.9;
+
+}
+
+/* ---------------- Home ---------------- */
+
+.home{
+
+display:flex;
+justify-content:center;
+align-items:center;
+height:calc(100% - 90px);
+
+}
+
+.menu{
+
+width:900px;
+max-width:90%;
+
+display:flex;
+flex-direction:column;
+gap:30px;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:30px;
+
+padding:35px;
+
+display:flex;
+
+align-items:center;
+
+gap:30px;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 12px 28px rgba(0,0,0,.10);
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.icon{
+
+font-size:60px;
+
+}
+
+.text h2{
+
+font-size:38px;
+margin-bottom:10px;
+color:#2E5E2E;
+
+}
+
+.text p{
+
+font-size:24px;
+color:#666;
+
+}
+
+/* ---------------- Blank Pages ---------------- */
+
+.blank{
+
+display:flex;
+justify-content:center;
+align-items:center;
+height:calc(100% - 90px);
+
+font-size:46px;
+font-weight:bold;
+color:#2E5E2E;
+
+}
+
+.back{
+
+position:absolute;
+
+bottom:40px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+padding:20px 60px;
+
+border:none;
+
+border-radius:20px;
+
+background:#4CAF50;
+
+color:white;
+
+font-size:28px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.back:hover{
+
+background:#3f9443;
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="topbar">🍽️ MH Meal Builder</div>
+<!-- Welcome -->
 
-<!-- WELCOME -->
 <div id="welcome" class="page active" onclick="showPage('home')">
-  <div>
-    <div class="welcome-title">MEAL HALL</div>
-    <div class="welcome-sub">Tap Anywhere to Begin</div>
-  </div>
+
+<div class="welcome-box">
+
+<div class="welcome-title">
+🍽️ Build Your Plate
 </div>
 
-<!-- HOME -->
+<div class="welcome-sub">
+Tap Anywhere to Begin
+</div>
+
+</div>
+
+</div>
+
+<!-- Home -->
+
 <div id="home" class="page">
 
-  <div class="home-list">
-    <div class="tile" onclick="openList('protein')">🍗 Protein Picks</div>
-    <div class="tile" onclick="openList('veg')">🥦 Veggie Picks</div>
-    <div class="tile" onclick="openList('fibre')">🌾 Fibre & Grains</div>
-    <div class="tile" onclick="openList('drinks')">🧃 Drinks</div>
-    <div class="tile" onclick="openList('top')">⭐ Top Picks</div>
-  </div>
+<div class="topbar">
+Meal Hall
+</div>
+
+<div class="home">
+
+<div class="menu">
+
+<div class="card" onclick="showPage('protein')">
+
+<div class="icon">🥩</div>
+
+<div class="text">
+
+<h2>Add Protein</h2>
+
+<p>Choose from today's protein-rich options.</p>
 
 </div>
 
-<!-- LIST -->
-<div id="list" class="page">
-  <div class="list" id="listContent"></div>
 </div>
 
-<!-- DETAILS -->
-<div id="details" class="page">
-  <div class="card" id="detailsContent"></div>
-  <div class="button back" onclick="showPage('home')">← Home</div>
+<div class="card" onclick="showPage('vegetables')">
+
+<div class="icon">🥦</div>
+
+<div class="text">
+
+<h2>Add Vegetables</h2>
+
+<p>Add fresh vegetables to build a balanced meal.</p>
+
+</div>
+
+</div>
+
+<div class="card" onclick="showPage('fibre')">
+
+<div class="icon">🌾</div>
+
+<div class="text">
+
+<h2>Add Fibre</h2>
+
+<p>Whole grains, rice and other fibre-rich foods.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Protein -->
+
+<div id="protein" class="page">
+
+<div class="topbar">
+🥩 Add Protein
+</div>
+
+<div class="blank">
+
+Coming Soon
+
+</div>
+
+<button class="back" onclick="showPage('home')">
+
+← Back
+
+</button>
+
+</div>
+
+<!-- Vegetables -->
+
+<div id="vegetables" class="page">
+
+<div class="topbar">
+🥦 Add Vegetables
+</div>
+
+<div class="blank">
+
+Coming Soon
+
+</div>
+
+<button class="back" onclick="showPage('home')">
+
+← Back
+
+</button>
+
+</div>
+
+<!-- Fibre -->
+
+<div id="fibre" class="page">
+
+<div class="topbar">
+🌾 Add Fibre
+</div>
+
+<div class="blank">
+
+Coming Soon
+
+</div>
+
+<button class="back" onclick="showPage('home')">
+
+← Back
+
+</button>
+
 </div>
 
 <script>
 
-let data = {
-  protein: [
-    { name:"Chicken Wrap", cal:520, p:"38g", c:"42g", f:"18g", loc:"Lunch Station" },
-    { name:"Egg Wrap", cal:420, p:"24g", c:"30g", f:"22g", loc:"Breakfast Station" },
-    { name:"Greek Yogurt", cal:170, p:"15g", c:"6g", f:"9g", loc:"Grab & Go" }
-  ],
-  veg: [
-    { name:"Caesar Salad", cal:310, p:"12g", c:"10g", f:"22g", loc:"Salad Bar" },
-    { name:"Veggie Bowl", cal:150, p:"6g", c:"18g", f:"5g", loc:"Hot Station" }
-  ],
-  fibre: [
-    { name:"Protein Oatmeal", cal:380, p:"20g", c:"55g", f:"8g", loc:"Breakfast Station" },
-    { name:"Brown Rice Bowl", cal:410, p:"10g", c:"72g", f:"6g", loc:"Hot Station" }
-  ],
-  drinks: [
-    { name:"Protein Smoothie", cal:250, p:"30g", c:"28g", f:"4g", loc:"Drink Station" },
-    { name:"Iced Coffee", cal:120, p:"5g", c:"18g", f:"3g", loc:"Drink Station" }
-  ],
-  top: [
-    { name:"High Protein Combo", cal:770, p:"68g", c:"70g", f:"22g", loc:"Combo Area" }
-  ]
-};
-
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  resetTimer();
-}
-
-function openList(category) {
-  let html = "";
-
-  data[category].forEach((item, i) => {
-    html += `
-      <div class="item" onclick="openDetails('${category}', ${i})">
-        ${item.name}
-      </div>
-    `;
-  });
-
-  document.getElementById("listContent").innerHTML = html;
-  showPage('list');
-}
-
-function openDetails(category, index) {
-  let item = data[category][index];
-
-  document.getElementById("detailsContent").innerHTML = `
-    <h2>${item.name}</h2><br>
-
-    Calories: ${item.cal}<br>
-    Protein: ${item.p}<br>
-    Carbs: ${item.c}<br>
-    Fat: ${item.f}<br><br>
-
-    📍 Location: ${item.loc}
-  `;
-
-  showPage('details');
-}
-
-/* 60 SECOND RESET */
 let timer;
 
-function resetTimer() {
-  clearTimeout(timer);
-  timer = setTimeout(() => {
-    showPage('welcome');
-  }, 60000);
+function showPage(id){
+
+document.querySelectorAll(".page").forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+resetTimer();
+
 }
 
-document.addEventListener('click', resetTimer);
-document.addEventListener('touchstart', resetTimer);
+function resetTimer(){
+
+clearTimeout(timer);
+
+timer=setTimeout(function(){
+
+showPage("welcome");
+
+},60000);
+
+}
+
+document.addEventListener("click",resetTimer);
+
+document.addEventListener("touchstart",resetTimer);
 
 resetTimer();
 
