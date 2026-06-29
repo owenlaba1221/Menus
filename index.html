@@ -22,7 +22,7 @@ html,body{
   background:#f6f3ee;
 }
 
-/* ================= FOOD BACKGROUND ================= */
+/* ================= BACKGROUND ================= */
 
 body::before{
   content:"";
@@ -237,12 +237,22 @@ button, .card {
         </div>
       </div>
 
+      <!-- ================= NEW OPTION ================= -->
+      <div class="card" onclick="showPage('creative')">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80">
+        <div class="text">
+          <h2>Get Creative</h2>
+          <p>Build your own custom Meal Hall plate</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
 </div>
 
 <!-- ================= PAGES ================= -->
+
 <div id="protein" class="page">
   <div class="topbar">Add Protein</div>
   <div class="blank">Coming Soon</div>
@@ -261,6 +271,13 @@ button, .card {
   <button class="back" onclick="showPage('home')">← Back</button>
 </div>
 
+<!-- NEW PAGE -->
+<div id="creative" class="page">
+  <div class="topbar">Get Creative in Meal Hall</div>
+  <div class="blank">Coming Soon</div>
+  <button class="back" onclick="showPage('home')">← Back</button>
+</div>
+
 <script>
 
 let timer;
@@ -273,12 +290,10 @@ function showPage(id){
 
   document.getElementById(id).classList.add("active");
 
-  currentPage = id;
-
   resetTimer();
 }
 
-/* ================= AUTO RESET SYSTEM ================= */
+/* ================= AUTO RESET ================= */
 
 function resetTimer(){
 
@@ -286,10 +301,8 @@ function resetTimer(){
 
   timer = setTimeout(()=>{
 
-    // go back to home after inactivity
     showPage("home");
 
-    // then go to welcome after extra idle time
     timer = setTimeout(()=>{
       showPage("welcome");
     }, 10000);
