@@ -1,3 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StFX Meal Hall</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#f6f3ee;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(122,30,44,0.08), transparent 400px),
+    radial-gradient(circle at 80% 70%, rgba(76,175,80,0.06), transparent 450px);
+  z-index:-1;
+}
+
+/* LOGO */
+.logo{
+  position:fixed;
+  top:18px;
+  right:30px;
+  width:130px;
+  z-index:1000;
+}
+
+.logo img{
+  width:100%;
+  height:auto;
+}
+
+/* PAGE SYSTEM */
+.page{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  transition:0.35s ease;
+}
+
+.page.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* TOP BAR */
+.topbar{
+  height:110px;
+  background:#7A1E2C;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:46px;
+  font-weight:bold;
+  box-shadow:0 4px 18px rgba(0,0,0,0.2);
+}
+
+/* WELCOME */
+#welcome{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  height:100%;
+  color:white;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=2000&q=80");
+
+  background-size:cover;
+  background-position:center;
+  cursor:pointer;
+}
+
+.welcome-title{
+  font-size:100px;
+  font-weight:bold;
+}
+
+.welcome-sub{
+  font-size:44px;
+  margin-top:25px;
+}
+
+/* MENU */
+.menu{
+  width:1100px;
+  max-width:94%;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:35px;
+  padding-top:140px;
+}
+
+/* CARDS */
+.card{
+  display:flex;
+  align-items:center;
+  background:white;
+  border-radius:34px;
+  padding:45px 50px;
+  box-shadow:0 12px 28px rgba(0,0,0,0.14);
+  cursor:pointer;
+  min-height:180px;
+  transition:0.2s ease;
+}
+
+.card:hover{
+  transform:scale(1.02);
+}
+
+.text h2{
+  font-size:56px;
+  color:#7A1E2C;
+}
+
+.text p{
+  font-size:30px;
+  color:#555;
+}
+
+/* PAGE CONTENT */
+.page-content{
+  height:calc(100% - 110px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.coming{
+  font-size:70px;
+  font-weight:bold;
+  color:#7A1E2C;
+}
+
+/* BUTTON */
+.btn{
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#7A1E2C;
+  color:white;
+  padding:28px 90px;
+  border:none;
+  border-radius:30px;
+  font-size:34px;
+  cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<div class="logo">
+    <img src="logo.png" alt="Sodexo Logo">
+</div>
+
+<!-- WELCOME -->
+<div id="welcome" class="page active" onclick="showPage('menu')">
+  <div>
+    <div class="welcome-title">Welcome to Meal Hall</div>
+    <div class="welcome-sub">Click to enhance your meal</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="page">
+
+  <div class="menu">
+
+    <div class="card" onclick="showPage('protein')">
+      <div class="text">
+        <h2>Add Protein</h2>
+        <p>Chicken, eggs, tofu & more</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="showPage('veg')">
+      <div class="text">
+        <h2>Add Vegetables</h2>
+        <p>Fresh greens & salads</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="showPage('fibre')">
+      <div class="text">
+        <h2>Add Fibre</h2>
+        <p>Oats, grains & whole foods</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="showPage('creative')">
+      <div class="text">
+        <h2>Get Creative</h2>
+        <p>Build your own custom meal</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PROTEIN -->
+<div id="protein" class="page">
+  <div class="topbar">Add Protein</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
+</div>
+
+<!-- VEG -->
+<div id="veg" class="page">
+  <div class="topbar">Add Vegetables</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
+</div>
+
+<!-- FIBRE -->
+<div id="fibre" class="page">
+  <div class="topbar">Add Fibre</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
+</div>
+
+<!-- CREATIVE -->
+<div id="creative" class="page">
+  <div class="topbar">Get Creative</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
+</div>
+
 <script>
 
 let timer;
@@ -20,18 +272,21 @@ function goHome(){
 function resetTimer(){
   clearTimeout(timer);
 
-  // ONLY go back to home after 30s of no interaction
+  // 20 seconds of inactivity before returning home
   timer = setTimeout(()=>{
     goHome();
-  }, 30000);
+  }, 20000);
 }
 
-// reset timer on ANY interaction
+// reset on interaction
 ["click","touchstart","mousemove"].forEach(evt=>{
   document.addEventListener(evt, resetTimer);
 });
 
-// start timer on load
+// start timer
 resetTimer();
 
 </script>
+
+</body>
+</html>
