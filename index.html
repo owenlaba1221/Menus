@@ -133,16 +133,13 @@ body::before{
   display:flex;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
-  padding:30px;
 }
 
-/* FIBRE IMAGE */
-.fibre-img{
-  width:90%;
-  max-width:1200px;
-  border-radius:30px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.2);
+/* TEXT */
+.coming{
+  font-size:70px;
+  font-weight:bold;
+  color:#7A1E2C;
 }
 
 /* BUTTON */
@@ -160,10 +157,6 @@ body::before{
   cursor:pointer;
 }
 
-button, .card{
-  touch-action:manipulation;
-}
-
 </style>
 </head>
 
@@ -171,12 +164,10 @@ button, .card{
 
 <!-- WELCOME -->
 <div id="welcome" class="page active" onclick="showPage('menu')">
-
   <div>
     <div class="welcome-title">Welcome to Meal Hall</div>
     <div class="welcome-sub">Click to enhance your meal</div>
   </div>
-
 </div>
 
 <!-- MENU -->
@@ -200,11 +191,12 @@ button, .card{
       </div>
     </div>
 
+    <!-- FIBRE = AESTHETIC OAT BOWL (MENU ONLY) -->
     <div class="card" onclick="showPage('fibre')">
-      <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=800&q=80">
       <div class="text">
         <h2>Add Fibre</h2>
-        <p>Rice, grains & whole foods</p>
+        <p>Oats, grains & whole foods</p>
       </div>
     </div>
 
@@ -223,33 +215,28 @@ button, .card{
 <!-- PROTEIN -->
 <div id="protein" class="page">
   <div class="topbar">Add Protein</div>
-  <div class="page-content">Coming Soon</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <!-- VEG -->
 <div id="veg" class="page">
   <div class="topbar">Add Vegetables</div>
-  <div class="page-content">Coming Soon</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
-<!-- FIBRE FIXED -->
+<!-- FIBRE (NO IMAGE HERE) -->
 <div id="fibre" class="page">
   <div class="topbar">Add Fibre</div>
-
-  <div class="page-content">
-    <img class="fibre-img"
-         src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1400&q=80">
-  </div>
-
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <!-- CREATIVE -->
 <div id="creative" class="page">
   <div class="topbar">Get Creative</div>
-  <div class="page-content">Coming Soon</div>
+  <div class="page-content"><div class="coming">Coming Soon</div></div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
