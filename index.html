@@ -134,33 +134,45 @@ body::before{
 }
 
 /* ========================= */
-/* 🔻 BOTTOM BAR LAYOUT */
+/* 🔻 BOTTOM BAR EDGE FIX */
 /* ========================= */
 
 .bottom-bar{
   position:fixed;
-  bottom:25px;          /* 👈 space from bottom */
+  bottom:25px;   /* space from bottom */
+
   left:0;
-  width:100%;
+  right:0;
+
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:0 25px;
+
   z-index:1000;
 }
 
-/* BACK BUTTON */
-.back-btn{
-  background:#ffffff;   /* matches logo style */
-  color:#003A70;
+/* shared button style */
+.bottom-btn{
+  width:220px;
+  height:75px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   font-size:26px;
   font-weight:bold;
 
-  padding:18px 40px;
-  border-radius:16px;
-
   box-shadow:0 6px 18px rgba(0,0,0,0.25);
+
   cursor:pointer;
+}
+
+/* BACK BUTTON (LEFT EDGE) */
+.back-btn{
+  background:#ffffff;
+  color:#003A70;
+
+  border-radius:0 16px 16px 0; /* flush left edge */
 }
 
 .back-btn:hover{
@@ -168,16 +180,14 @@ body::before{
   color:white;
 }
 
-/* LOGO */
-.logo-box{
+/* LOGO (RIGHT EDGE) */
+.logo-btn{
   background:#ffffff;
-  padding:14px 18px;
-  border-radius:16px;
 
-  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  border-radius:16px 0 0 16px; /* flush right edge */
 }
 
-.logo-box img{
+.logo-btn img{
   width:140px;
   display:block;
 }
@@ -188,15 +198,13 @@ body::before{
 <body>
 
 <!-- BOTTOM BAR -->
-<div class="bottom-bar">
+<div id="bottomBar" class="bottom-bar">
 
-  <!-- BACK -->
-  <div class="back-btn" onclick="goBack()">
+  <div class="bottom-btn back-btn" onclick="goBack()">
     ⟵ Back
   </div>
 
-  <!-- LOGO -->
-  <div class="logo-box">
+  <div class="bottom-btn logo-btn">
     <img src="logo.png" alt="Sodexo Logo">
   </div>
 
@@ -272,6 +280,8 @@ body::before{
 
 let currentPage = "welcome";
 
+const bottomBar = document.getElementById("bottomBar");
+
 function showPage(id){
 
   document.querySelectorAll(".page").forEach(p=>{
@@ -281,6 +291,8 @@ function showPage(id){
   document.getElementById(id).classList.add("active");
 
   currentPage = id;
+
+  updateUI();
 }
 
 function goBack(){
@@ -290,6 +302,17 @@ function goBack(){
     showPage("menu");
   }
 }
+
+/* hide on welcome */
+function updateUI(){
+  if(currentPage === "welcome"){
+    bottomBar.style.display = "none";
+  } else {
+    bottomBar.style.display = "flex";
+  }
+}
+
+updateUI();
 
 </script>
 
