@@ -34,30 +34,6 @@ body::before{
   z-index:-1;
 }
 
-/* LOGO TAB — WHITE + BIGGER */
-.logo{
-  position:fixed;
-  top:12px;
-  right:0;
-
-  width:220px; /* bigger tab */
-
-  background:#ffffff; /* solid white */
-
-  padding:16px 18px;
-
-  border-radius:22px 0 0 22px;
-
-  box-shadow:-8px 12px 25px rgba(0,0,0,0.35);
-
-  z-index:1000;
-}
-
-.logo img{
-  width:100%;
-  display:block;
-}
-
 /* PAGE SYSTEM */
 .page{
   position:absolute;
@@ -96,7 +72,6 @@ body::before{
   animation: blink 1.2s infinite;
 }
 
-/* BLINK */
 @keyframes blink {
   0% { opacity: 1; }
   50% { opacity: 0.2; }
@@ -158,24 +133,57 @@ body::before{
   text-shadow:0 4px 20px rgba(0,0,0,0.6);
 }
 
-/* BUTTON */
-.btn{
-  position:absolute;
-  bottom:50px;
-  left:50%;
-  transform:translateX(-50%);
+/* ========================= */
+/* 🔙 BACK TAB (BOTTOM LEFT) */
+/* ========================= */
+.back-tab{
+  position:fixed;
+  bottom:0;
+  left:0;
+
   background:#003A70;
   color:white;
-  padding:28px 90px;
-  border:none;
-  border-radius:30px;
-  font-size:34px;
+
+  padding:22px 45px;
+  font-size:28px;
+  font-weight:bold;
+
+  border-radius:0 18px 0 0;
+
   cursor:pointer;
-  transition:0.2s ease;
+  z-index:1000;
+
+  box-shadow:0 -6px 18px rgba(0,0,0,0.3);
 }
 
-.btn:hover{
+.back-tab:hover{
   background:#E4002B;
+}
+
+/* ========================= */
+/* 📍 LOGO (BOTTOM RIGHT) */
+/* ========================= */
+.logo{
+  position:fixed;
+  bottom:0;
+  right:0;
+
+  width:200px;
+
+  background:#ffffff;
+
+  padding:16px 18px;
+
+  border-radius:18px 0 0 0;
+
+  box-shadow:-6px -6px 18px rgba(0,0,0,0.25);
+
+  z-index:1000;
+}
+
+.logo img{
+  width:100%;
+  display:block;
 }
 
 </style>
@@ -183,9 +191,14 @@ body::before{
 
 <body>
 
-<!-- LOGO -->
+<!-- LOGO (BOTTOM RIGHT ONLY) -->
 <div class="logo">
-    <img src="logo.png" alt="Sodexo Logo">
+  <img src="logo.png" alt="Sodexo Logo">
+</div>
+
+<!-- BACK TAB -->
+<div class="back-tab" onclick="goBack()">
+  ⟵ Back
 </div>
 
 <!-- WELCOME -->
@@ -237,62 +250,45 @@ body::before{
 
 </div>
 
-<!-- PROTEIN -->
+<!-- PAGES -->
 <div id="protein" class="page">
   <div class="page-content"><div class="coming">Coming Soon</div></div>
-  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
-<!-- VEG -->
 <div id="veg" class="page">
   <div class="page-content"><div class="coming">Coming Soon</div></div>
-  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
-<!-- FIBRE -->
 <div id="fibre" class="page">
   <div class="page-content"><div class="coming">Coming Soon</div></div>
-  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
-<!-- CREATIVE -->
 <div id="creative" class="page">
   <div class="page-content"><div class="coming">Coming Soon</div></div>
-  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <script>
 
-let timer;
+let currentPage = "welcome";
 
 function showPage(id){
-
   document.querySelectorAll(".page").forEach(p=>{
     p.classList.remove("active");
   });
 
   document.getElementById(id).classList.add("active");
 
-  resetTimer();
+  currentPage = id;
 }
 
-function goHome(){
-  showPage("welcome");
+function goBack(){
+
+  if(currentPage === "menu"){
+    showPage("welcome");
+  } else {
+    showPage("menu");
+  }
 }
-
-function resetTimer(){
-  clearTimeout(timer);
-
-  timer = setTimeout(()=>{
-    goHome();
-  }, 20000);
-}
-
-["click","touchstart","mousemove"].forEach(evt=>{
-  document.addEventListener(evt, resetTimer);
-});
-
-resetTimer();
 
 </script>
 
