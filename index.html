@@ -36,7 +36,7 @@ body::before{
   position:fixed;
   top:18px;
   right:30px;
-  width:130px;
+  width:220px;
   z-index:1000;
 }
 
@@ -81,9 +81,10 @@ body::before{
   height:100%;
   color:white;
 
+  /* YOUR LOCAL IMAGE USED HERE */
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=2000&q=80");
+    url("Morrison%20Hall(1).jpg");
 
   background-size:cover;
   background-position:center;
@@ -272,18 +273,16 @@ function goHome(){
 function resetTimer(){
   clearTimeout(timer);
 
-  // 20 seconds of inactivity before returning home
+  // 20 seconds inactivity timeout
   timer = setTimeout(()=>{
     goHome();
   }, 20000);
 }
 
-// reset on interaction
 ["click","touchstart","mousemove"].forEach(evt=>{
   document.addEventListener(evt, resetTimer);
 });
 
-// start timer
 resetTimer();
 
 </script>
