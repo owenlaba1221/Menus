@@ -31,6 +31,20 @@ body::before{
   z-index:-1;
 }
 
+/* LOGO */
+.logo{
+  position:fixed;
+  top:25px;
+  right:25px;
+  width:150px;
+  z-index:9999;
+}
+
+.logo img{
+  width:100%;
+  height:auto;
+}
+
 /* PAGE SYSTEM */
 .page{
   position:absolute;
@@ -101,20 +115,17 @@ body::before{
 .card{
   display:flex;
   align-items:center;
-  gap:30px;
   background:white;
   border-radius:34px;
-  padding:35px;
+  padding:45px 50px;
   box-shadow:0 12px 28px rgba(0,0,0,0.14);
   cursor:pointer;
   min-height:180px;
+  transition:0.2s ease;
 }
 
-.card img{
-  width:220px;
-  height:150px;
-  object-fit:cover;
-  border-radius:22px;
+.card:hover{
+  transform:scale(1.02);
 }
 
 .text h2{
@@ -162,6 +173,11 @@ body::before{
 
 <body>
 
+<!-- LOGO -->
+<div class="logo">
+  <img src="YOUR_SODEXO_LOGO_URL_HERE" alt="Sodexo Logo">
+</div>
+
 <!-- WELCOME -->
 <div id="welcome" class="page active" onclick="showPage('menu')">
   <div>
@@ -176,7 +192,6 @@ body::before{
   <div class="menu">
 
     <div class="card" onclick="showPage('protein')">
-      <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80">
       <div class="text">
         <h2>Add Protein</h2>
         <p>Chicken, eggs, tofu & more</p>
@@ -184,24 +199,20 @@ body::before{
     </div>
 
     <div class="card" onclick="showPage('veg')">
-      <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80">
       <div class="text">
         <h2>Add Vegetables</h2>
         <p>Fresh greens & salads</p>
       </div>
     </div>
 
-    <!-- FIBRE = AESTHETIC OAT BOWL (MENU ONLY) -->
-   <div class="card" onclick="showPage('fibre')">
-  <img src="/mnt/data/d82c633b-d7fd-4a7b-af70-8b5dce5a60aa.png">
-  <div class="text">
-    <h2>Add Fibre</h2>
-    <p>Oats, grains & whole foods</p>
-  </div>
-</div>
+    <div class="card" onclick="showPage('fibre')">
+      <div class="text">
+        <h2>Add Fibre</h2>
+        <p>Oats, grains & whole foods</p>
+      </div>
+    </div>
 
     <div class="card" onclick="showPage('creative')">
-      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80">
       <div class="text">
         <h2>Get Creative</h2>
         <p>Build your own custom meal</p>
@@ -226,7 +237,7 @@ body::before{
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
-<!-- FIBRE (NO IMAGE HERE) -->
+<!-- FIBRE -->
 <div id="fibre" class="page">
   <div class="topbar">Add Fibre</div>
   <div class="page-content"><div class="coming">Coming Soon</div></div>
@@ -255,7 +266,6 @@ function showPage(id){
   resetTimer();
 }
 
-/* 30 SECOND RESET */
 function resetTimer(){
 
   clearTimeout(timer);
