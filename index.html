@@ -6,8 +6,6 @@
 
 <style>
 
-/* ================= RESET ================= */
-
 *{
   margin:0;
   padding:0;
@@ -22,8 +20,7 @@ html,body{
   background:#f6f3ee;
 }
 
-/* ================= BACKGROUND ================= */
-
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -34,8 +31,7 @@ body::before{
   z-index:-1;
 }
 
-/* ================= PAGE SYSTEM ================= */
-
+/* PAGE SYSTEM */
 .page{
   position:absolute;
   inset:0;
@@ -49,33 +45,26 @@ body::before{
   pointer-events:auto;
 }
 
-/* ================= TOP BAR ================= */
-
+/* TOP BAR */
 .topbar{
   height:110px;
   background:#7A1E2C;
   color:white;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:46px;
   font-weight:bold;
-
   box-shadow:0 4px 18px rgba(0,0,0,0.2);
 }
 
-/* ================= WELCOME ================= */
-
+/* WELCOME */
 #welcome{
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-
   height:100%;
-
   color:white;
 
   background:
@@ -84,7 +73,6 @@ body::before{
 
   background-size:cover;
   background-position:center;
-
   cursor:pointer;
 }
 
@@ -96,42 +84,30 @@ body::before{
 .welcome-sub{
   font-size:44px;
   margin-top:25px;
-  opacity:0.95;
 }
 
-/* ================= MENU ================= */
-
+/* MENU */
 .menu{
   width:1100px;
   max-width:94%;
   margin:0 auto;
-
   display:flex;
   flex-direction:column;
   gap:35px;
-
   padding-top:140px;
 }
 
-/* ================= CARDS ================= */
-
+/* CARDS */
 .card{
   display:flex;
   align-items:center;
   gap:30px;
-
   background:white;
   border-radius:34px;
   padding:35px;
-
   box-shadow:0 12px 28px rgba(0,0,0,0.14);
   cursor:pointer;
-
   min-height:180px;
-}
-
-.card:active{
-  transform:scale(0.98);
 }
 
 .card img{
@@ -140,8 +116,6 @@ body::before{
   object-fit:cover;
   border-radius:22px;
 }
-
-/* ================= TEXT ================= */
 
 .text h2{
   font-size:56px;
@@ -153,8 +127,7 @@ body::before{
   color:#555;
 }
 
-/* ================= PAGE CONTENT ================= */
-
+/* PAGE CONTENT */
 .page-content{
   height:calc(100% - 110px);
   display:flex;
@@ -164,8 +137,7 @@ body::before{
   padding:30px;
 }
 
-/* ================= FIBRE IMAGE ================= */
-
+/* FIBRE IMAGE */
 .fibre-img{
   width:90%;
   max-width:1200px;
@@ -173,31 +145,23 @@ body::before{
   box-shadow:0 12px 30px rgba(0,0,0,0.2);
 }
 
-/* ================= BUTTONS ================= */
-
+/* BUTTON */
 .btn{
   position:absolute;
   bottom:50px;
-
+  left:50%;
+  transform:translateX(-50%);
   background:#7A1E2C;
   color:white;
-
   padding:28px 90px;
   border:none;
   border-radius:30px;
-
   font-size:34px;
   cursor:pointer;
 }
 
-.back{
-  left:50%;
-  transform:translateX(-50%);
-}
-
-/* touch fix */
-button, .card {
-  touch-action: manipulation;
+button, .card{
+  touch-action:manipulation;
 }
 
 </style>
@@ -205,7 +169,7 @@ button, .card {
 
 <body>
 
-<!-- ================= WELCOME ================= -->
+<!-- WELCOME -->
 <div id="welcome" class="page active" onclick="showPage('menu')">
 
   <div>
@@ -215,7 +179,7 @@ button, .card {
 
 </div>
 
-<!-- ================= MENU ================= -->
+<!-- MENU -->
 <div id="menu" class="page">
 
   <div class="menu">
@@ -236,7 +200,6 @@ button, .card {
       </div>
     </div>
 
-    <!-- ================= FIXED FIBRE IMAGE ================= -->
     <div class="card" onclick="showPage('fibre')">
       <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80">
       <div class="text">
@@ -257,29 +220,21 @@ button, .card {
 
 </div>
 
-<!-- ================= PAGES ================= -->
-
+<!-- PROTEIN -->
 <div id="protein" class="page">
   <div class="topbar">Add Protein</div>
-
-  <div class="page-content">
-    <div style="font-size:70px;color:#7A1E2C;font-weight:bold;">Coming Soon</div>
-  </div>
-
-  <button class="btn back" onclick="showPage('menu')">← Back</button>
+  <div class="page-content">Coming Soon</div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
+<!-- VEG -->
 <div id="veg" class="page">
   <div class="topbar">Add Vegetables</div>
-
-  <div class="page-content">
-    <div style="font-size:70px;color:#7A1E2C;font-weight:bold;">Coming Soon</div>
-  </div>
-
-  <button class="btn back" onclick="showPage('menu')">← Back</button>
+  <div class="page-content">Coming Soon</div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
-<!-- ================= FIBRE PAGE ================= -->
+<!-- FIBRE FIXED -->
 <div id="fibre" class="page">
   <div class="topbar">Add Fibre</div>
 
@@ -288,17 +243,14 @@ button, .card {
          src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1400&q=80">
   </div>
 
-  <button class="btn back" onclick="showPage('menu')">← Back</button>
+  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
+<!-- CREATIVE -->
 <div id="creative" class="page">
   <div class="topbar">Get Creative</div>
-
-  <div class="page-content">
-    <div style="font-size:70px;color:#7A1E2C;font-weight:bold;">Coming Soon</div>
-  </div>
-
-  <button class="btn back" onclick="showPage('menu')">← Back</button>
+  <div class="page-content">Coming Soon</div>
+  <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <script>
@@ -316,8 +268,7 @@ function showPage(id){
   resetTimer();
 }
 
-/* ================= 30 SECOND RESET ================= */
-
+/* 30 SECOND RESET */
 function resetTimer(){
 
   clearTimeout(timer);
