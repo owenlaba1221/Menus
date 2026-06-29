@@ -6,7 +6,7 @@
 
 <style>
 
-/* ================= BASE ================= */
+/* ================= RESET ================= */
 
 *{
   margin:0;
@@ -19,24 +19,18 @@ html,body{
   width:100%;
   height:100%;
   overflow:hidden;
-  background:#f6f3ee; /* warm food tone */
+  background:#f6f3ee;
 }
 
-/* ================= FOOD-THEMED BACKGROUND ================= */
+/* ================= FOOD BACKGROUND ================= */
 
 body::before{
   content:"";
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-
+  inset:0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(122,30,44,0.08), transparent 300px),
-    radial-gradient(circle at 80% 70%, rgba(76,175,80,0.06), transparent 350px),
-    radial-gradient(circle at 50% 50%, rgba(255,193,7,0.05), transparent 400px);
-
+    radial-gradient(circle at 20% 20%, rgba(122,30,44,0.08), transparent 400px),
+    radial-gradient(circle at 80% 70%, rgba(76,175,80,0.06), transparent 450px);
   z-index:-1;
 }
 
@@ -44,11 +38,10 @@ body::before{
 
 .page{
   position:absolute;
-  width:100%;
-  height:100%;
+  inset:0;
   opacity:0;
   pointer-events:none;
-  transition:0.4s ease;
+  transition:0.35s ease;
 }
 
 .page.active{
@@ -60,14 +53,14 @@ body::before{
 
 .topbar{
   height:100px;
-  background:#7A1E2C; /* StFX maroon */
+  background:#7A1E2C;
   color:white;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:40px;
+  font-size:42px;
   font-weight:bold;
 
   box-shadow:0 4px 18px rgba(0,0,0,0.2);
@@ -80,16 +73,17 @@ body::before{
   justify-content:center;
   align-items:center;
   text-align:center;
-  cursor:pointer;
+
+  color:white;
 
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url("images/welcome.jpg");
+    url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=2000&q=80");
 
   background-size:cover;
   background-position:center;
 
-  color:white;
+  cursor:pointer;
 }
 
 .welcome-title{
@@ -98,9 +92,9 @@ body::before{
 }
 
 .welcome-sub{
-  font-size:36px;
-  opacity:0.9;
+  font-size:34px;
   margin-top:20px;
+  opacity:0.9;
 }
 
 /* ================= HOME ================= */
@@ -117,7 +111,7 @@ body::before{
   max-width:92%;
   display:flex;
   flex-direction:column;
-  gap:30px;
+  gap:28px;
 }
 
 /* ================= CARDS ================= */
@@ -125,33 +119,33 @@ body::before{
 .card{
   display:flex;
   align-items:center;
-  gap:30px;
+  gap:25px;
 
   background:white;
-  border-radius:30px;
-  padding:25px;
+  border-radius:28px;
+  padding:20px;
 
   box-shadow:0 10px 25px rgba(0,0,0,0.12);
   cursor:pointer;
 
-  transition:0.25s;
+  transition:0.2s ease;
 }
 
-.card:hover{
-  transform:scale(1.02);
+.card:active{
+  transform:scale(0.98);
 }
 
 .card img{
-  width:160px;
-  height:120px;
+  width:180px;
+  height:130px;
   object-fit:cover;
-  border-radius:20px;
+  border-radius:18px;
 }
 
 /* ================= TEXT ================= */
 
 .text h2{
-  font-size:44px;
+  font-size:46px;
   color:#7A1E2C;
 }
 
@@ -160,7 +154,7 @@ body::before{
   color:#555;
 }
 
-/* ================= BLANK PAGES ================= */
+/* ================= BLANK ================= */
 
 .blank{
   height:100%;
@@ -168,7 +162,7 @@ body::before{
   align-items:center;
   justify-content:center;
 
-  font-size:60px;
+  font-size:64px;
   font-weight:bold;
   color:#7A1E2C;
 }
@@ -184,19 +178,16 @@ body::before{
   background:#7A1E2C;
   color:white;
 
-  padding:25px 70px;
+  padding:26px 80px;
   border:none;
   border-radius:25px;
 
-  font-size:30px;
+  font-size:32px;
   cursor:pointer;
 }
 
-/* ================= TOUCH FEEL ================= */
-
-.card:active,
-.back:active{
-  transform:scale(0.98);
+button, .card {
+  touch-action: manipulation;
 }
 
 </style>
@@ -220,11 +211,10 @@ body::before{
   <div class="topbar">Build Your Plate</div>
 
   <div class="home">
-
     <div class="menu">
 
       <div class="card" onclick="showPage('protein')">
-        <img src="images/protein.jpg">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80">
         <div class="text">
           <h2>Add Protein</h2>
           <p>Chicken, eggs, tofu & more</p>
@@ -232,15 +222,15 @@ body::before{
       </div>
 
       <div class="card" onclick="showPage('veg')">
-        <img src="images/vegetables.jpg">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80">
         <div class="text">
           <h2>Add Vegetables</h2>
-          <p>Fresh, healthy greens daily</p>
+          <p>Fresh greens & salads</p>
         </div>
       </div>
 
       <div class="card" onclick="showPage('fibre')">
-        <img src="images/fibre.jpg">
+        <img src="https://images.unsplash.com/photo-1604908554165-5f1a9d1b5c2d?auto=format&fit=crop&w=800&q=80">
         <div class="text">
           <h2>Add Fibre</h2>
           <p>Rice, grains & whole foods</p>
@@ -248,30 +238,27 @@ body::before{
       </div>
 
     </div>
-
   </div>
 
 </div>
 
-<!-- ================= PROTEIN ================= -->
+<!-- ================= PAGES ================= -->
 <div id="protein" class="page">
   <div class="topbar">Add Protein</div>
   <div class="blank">Coming Soon</div>
-  <button class="back" onclick="showPage('home')">Back</button>
+  <button class="back" onclick="showPage('home')">← Back</button>
 </div>
 
-<!-- ================= VEG ================= -->
 <div id="veg" class="page">
   <div class="topbar">Add Vegetables</div>
   <div class="blank">Coming Soon</div>
-  <button class="back" onclick="showPage('home')">Back</button>
+  <button class="back" onclick="showPage('home')">← Back</button>
 </div>
 
-<!-- ================= FIBRE ================= -->
 <div id="fibre" class="page">
   <div class="topbar">Add Fibre</div>
   <div class="blank">Coming Soon</div>
-  <button class="back" onclick="showPage('home')">Back</button>
+  <button class="back" onclick="showPage('home')">← Back</button>
 </div>
 
 <script>
@@ -286,21 +273,34 @@ function showPage(id){
 
   document.getElementById(id).classList.add("active");
 
+  currentPage = id;
+
   resetTimer();
 }
+
+/* ================= AUTO RESET SYSTEM ================= */
 
 function resetTimer(){
 
   clearTimeout(timer);
 
   timer = setTimeout(()=>{
-    showPage("welcome");
-  },60000);
+
+    // go back to home after inactivity
+    showPage("home");
+
+    // then go to welcome after extra idle time
+    timer = setTimeout(()=>{
+      showPage("welcome");
+    }, 10000);
+
+  }, 60000);
 
 }
 
-document.addEventListener("click", resetTimer);
-document.addEventListener("touchstart", resetTimer);
+["click","touchstart","mousemove"].forEach(evt=>{
+  document.addEventListener(evt, resetTimer);
+});
 
 resetTimer();
 
