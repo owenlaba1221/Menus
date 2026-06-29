@@ -17,7 +17,7 @@ html,body{
   width:100%;
   height:100%;
   overflow:hidden;
-  background:#f6f3ee;
+  background:#f4f6f8;
 }
 
 /* BACKGROUND */
@@ -26,8 +26,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(122,30,44,0.08), transparent 400px),
-    radial-gradient(circle at 80% 70%, rgba(76,175,80,0.06), transparent 450px);
+    radial-gradient(circle at 20% 20%, rgba(0,94,184,0.10), transparent 400px),
+    radial-gradient(circle at 80% 70%, rgba(228,0,43,0.08), transparent 450px);
   z-index:-1;
 }
 
@@ -59,19 +59,6 @@ body::before{
   pointer-events:auto;
 }
 
-/* TOP BAR */
-.topbar{
-  height:110px;
-  background:#7A1E2C;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:46px;
-  font-weight:bold;
-  box-shadow:0 4px 18px rgba(0,0,0,0.2);
-}
-
 /* WELCOME */
 #welcome{
   display:flex;
@@ -81,7 +68,6 @@ body::before{
   height:100%;
   color:white;
 
-  /* YOUR LOCAL IMAGE USED HERE */
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url("Morrison%20Hall(1).jpg");
@@ -94,11 +80,13 @@ body::before{
 .welcome-title{
   font-size:100px;
   font-weight:bold;
+  line-height:1.1;
 }
 
 .welcome-sub{
   font-size:44px;
   margin-top:25px;
+  color:#e6e6e6;
 }
 
 /* MENU */
@@ -119,10 +107,11 @@ body::before{
   background:white;
   border-radius:34px;
   padding:45px 50px;
-  box-shadow:0 12px 28px rgba(0,0,0,0.14);
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
   cursor:pointer;
   min-height:180px;
   transition:0.2s ease;
+  border-left:10px solid #E4002B; /* Sodexo red accent */
 }
 
 .card:hover{
@@ -131,7 +120,7 @@ body::before{
 
 .text h2{
   font-size:56px;
-  color:#7A1E2C;
+  color:#005EB8; /* Sodexo blue */
 }
 
 .text p{
@@ -141,7 +130,7 @@ body::before{
 
 /* PAGE CONTENT */
 .page-content{
-  height:calc(100% - 110px);
+  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -150,7 +139,7 @@ body::before{
 .coming{
   font-size:70px;
   font-weight:bold;
-  color:#7A1E2C;
+  color:#005EB8;
 }
 
 /* BUTTON */
@@ -159,13 +148,18 @@ body::before{
   bottom:50px;
   left:50%;
   transform:translateX(-50%);
-  background:#7A1E2C;
+  background:#005EB8;
   color:white;
   padding:28px 90px;
   border:none;
   border-radius:30px;
   font-size:34px;
   cursor:pointer;
+  transition:0.2s ease;
+}
+
+.btn:hover{
+  background:#E4002B;
 }
 
 </style>
@@ -181,7 +175,9 @@ body::before{
 <!-- WELCOME -->
 <div id="welcome" class="page active" onclick="showPage('menu')">
   <div>
-    <div class="welcome-title">Welcome to Meal Hall</div>
+    <div class="welcome-title">
+      Welcome to<br>Meal Hall
+    </div>
     <div class="welcome-sub">Click to enhance your meal</div>
   </div>
 </div>
@@ -225,29 +221,33 @@ body::before{
 
 <!-- PROTEIN -->
 <div id="protein" class="page">
-  <div class="topbar">Add Protein</div>
-  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <div class="page-content">
+    <div class="coming">Coming Soon</div>
+  </div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <!-- VEG -->
 <div id="veg" class="page">
-  <div class="topbar">Add Vegetables</div>
-  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <div class="page-content">
+    <div class="coming">Coming Soon</div>
+  </div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <!-- FIBRE -->
 <div id="fibre" class="page">
-  <div class="topbar">Add Fibre</div>
-  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <div class="page-content">
+    <div class="coming">Coming Soon</div>
+  </div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
 <!-- CREATIVE -->
 <div id="creative" class="page">
-  <div class="topbar">Get Creative</div>
-  <div class="page-content"><div class="coming">Coming Soon</div></div>
+  <div class="page-content">
+    <div class="coming">Coming Soon</div>
+  </div>
   <button class="btn" onclick="showPage('menu')">Home</button>
 </div>
 
@@ -273,7 +273,6 @@ function goHome(){
 function resetTimer(){
   clearTimeout(timer);
 
-  // 20 seconds inactivity timeout
   timer = setTimeout(()=>{
     goHome();
   }, 20000);
