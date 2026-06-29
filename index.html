@@ -34,25 +34,28 @@ body::before{
   z-index:-1;
 }
 
-/* LOGO TAB (NEW) */
+/* LOGO — FLUSH RIGHT EDGE */
 .logo{
   position:fixed;
   top:12px;
-  right:12px;
-  width:110px;
-  z-index:1000;
+  right:0;              /* 🔥 flush to edge */
 
-  background:rgba(255,255,255,0.85);
-  padding:10px 12px;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  width:160px;
+
+  background:rgba(255,255,255,0.92);
+  padding:14px 16px;
+
+  border-radius:20px 0 0 20px; /* only left side rounded */
+
+  box-shadow:-6px 10px 20px rgba(0,0,0,0.3);
 
   backdrop-filter: blur(6px);
+
+  z-index:1000;
 }
 
 .logo img{
   width:100%;
-  height:auto;
   display:block;
 }
 
@@ -181,7 +184,7 @@ body::before{
 
 <body>
 
-<!-- LOGO TAB -->
+<!-- LOGO -->
 <div class="logo">
     <img src="logo.png" alt="Sodexo Logo">
 </div>
